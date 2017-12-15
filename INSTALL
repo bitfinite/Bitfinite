@@ -1,0 +1,9 @@
+Building Bitfinite
+
+See doc/readme-qt.rst for instructions on building Bitfinite Qt,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of Bitfinite.
+
+See doc/build-*.txt for instructions on building Bitfinited,
+the intended-for-services, no-graphical-interface, reference
+implementation of Bitfinite.

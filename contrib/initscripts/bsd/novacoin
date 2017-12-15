@@ -1,0 +1,68 @@
+#!/bin/sh
+
+# PROVIDE: Bitfinite
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# Bitfinite_enable (bool): Set to NO by default. Set this variable to YES if you want to enable Bitfinite service.
+# Bitfinite_config (path): Set to /usr/local/etc/Bitfinite.conf by default.
+# Bitfinite_user:  The user account Bitfinite daemon runs as. It uses 'root' user by default.
+# Bitfinite_group: The group account Bitfinite daemon runs as. It uses 'wheel' group by default.
+# Bitfinite_datadir (str): Default to "/var/db/Bitfinite". Base data directory.
+
+. /etc/rc.subr
+
+name=Bitfinite
+rcvar=Bitfinite_enable
+
+: ${Bitfinite_enable:=NO}
+: ${Bitfinite_config=/usr/local/etc/Bitfinite.conf}
+: ${Bitfinite_datadir=/var/db/Bitfinite}
+: ${Bitfinite_user="root"}
+: ${Bitfinite_group="wheel"}
+
+required_files=${Bitfinite_config}
+command=/usr/local/bin/Bitfinited
+Bitfinite_chdir=${Bitfinite_datadir}
+pidfile="${Bitfinite_datadir}/Bitfinited.pid"
+stop_cmd=Bitfinite_stop
+command_args="-conf=${Bitfinite_config} -datadir=${Bitfinite_datadir} -daemon -pid=${pidfile}"
+start_precmd="${name}_prestart"
+
+Bitfinite_create_datadir()
+{
+	echo "Creating data directory"
+	eval mkdir -p ${Bitfinite_datadir}
+	[ $? -eq 0 ] && chown -R ${Bitfinite_user}:${Bitfinite_group} ${Bitfinite_datadir}
+}
+
+Bitfinite_prestart()
+{
+	if [ ! -d "${Bitfinite_datadir}/." ]; then
+		Bitfinite_create_datadir || return 1
+	fi
+}
+
+Bitfinite_requirepidfile()
+{
+	if [ ! "0`check_pidfile ${pidfile} ${command}`" -gt 1 ]; then
+		echo "${name} not running? (check $pidfile)."
+		exit 1
+	fi
+}
+
+Bitfinite_stop()
+{
+    Bitfinite_requirepidfile
+
+	echo "Stopping ${name}."
+	eval ${command} -conf=${Bitfinite_config} -datadir=${Bitfinite_datadir} stop
+	wait_for_pids ${rc_pid}
+}
+
+load_rc_config $name
+run_rc_command "$1"

@@ -1,0 +1,2 @@
+debian/bin/Bitfinited usr/bin
+src/Bitfinited usr/lib/Bitfinite

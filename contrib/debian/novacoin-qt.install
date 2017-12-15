@@ -1,0 +1,5 @@
+Bitfinite-qt usr/bin
+share/pixmaps/Bitfinite32.xpm usr/share/pixmaps
+share/pixmaps/Bitfinite80.xpm usr/share/pixmaps
+debian/Bitfinite-qt.desktop usr/share/applications
+debian/Bitfinite-qt.protocol usr/share/kde4/services/

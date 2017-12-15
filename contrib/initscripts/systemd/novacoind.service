@@ -1,0 +1,11 @@
+[Unit]
+Description=Bitfinite daemon serivce
+After=network.target
+
+[Service]
+Type=simple
+User=Bitfinite
+ExecStart=/opt/Bitfinite/Bitfinited
+
+[Install]
+WantedBy=multi-user.target

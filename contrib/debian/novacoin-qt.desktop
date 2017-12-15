@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Bitfinite
+Comment=Bitfinite P2P Cryptocurrency
+Comment[ru]=Bitfinite, P2P криптовалюта
+Comment[fr]=Bitfinite, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Bitfinite, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/Bitfinite-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/Bitfinite80.xpm
+MimeType=x-scheme-handler/Bitfinite;
+Categories=Office;
