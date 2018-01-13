@@ -30,10 +30,10 @@ static const int DATABASE_VERSION = 70507;
 // network protocol versioning
 //
 
-static const int PROTOCOL_VERSION = 91001;
+static const int PROTOCOL_VERSION = 91002;
 
 // earlier versions not supported as of Feb 2012, and are disconnected
-static const int MIN_PROTO_VERSION = 91001;
+static const int MIN_PROTO_VERSION = 91002;
 
 // nTime field added to CAddress, starting with this version;
 // if possible, avoid requesting addresses nodes older than this
@@ -41,7 +41,7 @@ static const int CADDR_TIME_VERSION = 31402;
 
 // only request blocks from nodes outside this range of versions
 static const int NOBLKS_VERSION_START = 60002;
-static const int NOBLKS_VERSION_END = 91002;
+static const int NOBLKS_VERSION_END = 91000;
 
 // BIP 0031, pong message, is enabled for all versions AFTER this one
 static const int BIP0031_VERSION = 60000;
