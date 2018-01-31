@@ -34,7 +34,7 @@ class CNode;
 // Global state
 //
 
-static const int LAST_POW_BLOCK = 362800; // After 362800 Coin will be Pure PoS
+static const int LAST_POW_BLOCK = 93500; // After 93500 Coin will be Pure PoS
 
 static const unsigned int MAX_BLOCK_SIZE = 3000000;
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
